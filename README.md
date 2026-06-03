@@ -13,3 +13,6 @@ The purpose of this repository is to:
 ## 1. Next.js
 
 **Next.js** is a React framework used to build modern full-stack web applications. 
+
+** Topic 1 routing Topic 2 import export
+
