@@ -9,7 +9,7 @@ const Page = () => {
     setCount(count + 1);
   }
 
-  handleClick();
+  // handleClick();
 
   return (
     <>
