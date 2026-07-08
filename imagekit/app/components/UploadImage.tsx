@@ -11,11 +11,12 @@ import {
 import { useRef, useState } from "react";
 
 const UploadImage = () => {
+
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const [progress, setProgress] = useState(0);
-  const [uploading, setUploading] = useState(false);
-  const [uploadedUrl, setUploadedUrl] = useState("");
+  const [progress, setProgress] = useState<number>(0);
+  const [uploading, setUploading] = useState<boolean>(false);
+  const [uploadedUrl, setUploadedUrl] = useState<string | null>("");
 
   const abortController = new AbortController();
 
@@ -40,10 +41,12 @@ const UploadImage = () => {
 
     const file = fileInput.files[0];
 
+    // console.log(process.env.NEXT_PUBLIC_PUBLIC_KEY!,"befor upload")
+
     try {
       setUploading(true);
 
-      const { signature, expire, token, publicKey } =
+      const { signature, expire, token, } =
         await authenticator();
 
       const result = await upload({
@@ -53,7 +56,7 @@ const UploadImage = () => {
         signature,
         token,
         expire,
-        publicKey,
+        publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY!,
 
         abortSignal: abortController.signal,
 
@@ -62,11 +65,13 @@ const UploadImage = () => {
         },
       });
 
-      console.log(result);
+      // console.log(process.env.NEXT_PUBLIC_PUBLIC_KEY!,"befor upload")
 
-      setUploadedUrl(result.url);
+      // setUploadedUrl(result.url);
+      setUploadedUrl(result.url ?? null);
 
       alert("Upload Successful");
+
     } catch (error) {
       if (error instanceof ImageKitAbortError) {
         console.log("Upload aborted");
@@ -95,7 +100,7 @@ const UploadImage = () => {
       <button
         onClick={handleUpload}
         disabled={uploading}
-        className="rounded bg-blue-600 px-4 py-2 text-white"
+          className="rounded bg-blue-600 px-4 py-2 text-white"
       >
         {uploading ? "Uploading..." : "Upload"}
       </button>
