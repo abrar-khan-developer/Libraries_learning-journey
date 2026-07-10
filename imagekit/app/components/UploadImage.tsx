@@ -52,7 +52,6 @@ const UploadImage = () => {
       const result = await upload({
         file,
         fileName: file.name,
-
         signature,
         token,
         expire,
@@ -65,7 +64,6 @@ const UploadImage = () => {
         },
       });
 
-      // console.log(process.env.NEXT_PUBLIC_PUBLIC_KEY!,"befor upload")
 
       // setUploadedUrl(result.url);
       setUploadedUrl(result.url ?? null);
@@ -73,19 +71,22 @@ const UploadImage = () => {
       alert("Upload Successful");
 
     } catch (error) {
-      if (error instanceof ImageKitAbortError) {
-        console.log("Upload aborted");
-      } else if (error instanceof ImageKitInvalidRequestError) {
-        console.log(error.message);
-      } else if (error instanceof ImageKitUploadNetworkError) {
-        console.log(error.message);
-      } else if (error instanceof ImageKitServerError) {
-        console.log(error.message);
-      } else {
-        console.log(error);
-      }
+        
+        if (error instanceof ImageKitAbortError) {
+          console.log("Upload aborted");
+        } else if (error instanceof ImageKitInvalidRequestError) {
+          console.log(error.message);
+        } else if (error instanceof ImageKitUploadNetworkError) {
+          console.log(error.message);
+        } else if (error instanceof ImageKitServerError) {
+          console.log(error.message);
+        } else {
+          console.log(error);
+        }
+
     } finally {
-      setUploading(false);
+      
+       setUploading(false);
     }
   };
 
