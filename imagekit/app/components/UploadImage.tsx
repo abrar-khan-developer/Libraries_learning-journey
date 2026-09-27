@@ -32,6 +32,7 @@ const UploadImage = () => {
   };
 
   const handleUpload = async () => {
+    
     const fileInput = fileInputRef.current;
 
     if (!fileInput?.files?.length) {

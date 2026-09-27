@@ -31,21 +31,28 @@ function page() {
     };
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center min-h-screen gap-3">
 
-        <input
+        <input  
+            className="mt-2 border border-gray-300 rounded-md p-2"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
+            className="mt-2 border border-gray-300 rounded-md p-2"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button onClick={handleLogin}>Login</button>
+        <button 
+            className="mt-2 border border-gray-300 rounded-md p-2 cursor-pointer hover:bg-gray-100"
+            onClick={handleLogin}>
+                Login
+        </button>
+
     </div>
   )
 }

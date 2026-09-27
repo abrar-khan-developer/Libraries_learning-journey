@@ -12,5 +12,10 @@ export async function GET() {
     
     const authenticationParameters = imagekit.getAuthenticationParameters();
 
-    return NextResponse.json(authenticationParameters);
+    // return NextResponse.json(authenticationParameters,{publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY!});
+
+  return NextResponse.json({
+        ...authenticationParameters,
+        publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY!,
+    });
 }
