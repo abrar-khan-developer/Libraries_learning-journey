@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  background: #eeeeee;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  background: #222;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #444;
+}
